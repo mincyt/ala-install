@@ -1,0 +1,7 @@
+AuthUserFile /etc/apache2/htpassword
+AuthGroupFile /dev/null
+AuthName "Ala Test"
+AuthType Basic
+<Limit GET POST>
+require user alatest
+</Limit>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portal de Datos del Sistema Nacional de Datos Biológicos</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/sndb2.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+		<div class="row" >
+			<div class="span1">&nbsp;</div>
+			<div class="span5">
+			  <a href="#"><img src="images/logo_portal.png" alt="Portal del SNDB"></a>
+			</div>
+			<div class="span5">
+			  <a href="#" class="pull-right"><img src="images/logo_datos_biologicos.png" alt="Sistemas Nacionales - Datos Biológicos"></a>
+			</div>
+			<div class="span1">&nbsp;</div>
+		</div>
+	</div>
+	<div class="navbar navbar-inverse" >
+		  <div class="navbar-inner" style="padding:0;">
+			<ul class="nav" >
+				<li><a href="http://{{demo_hostname}}/">INICIO</a></li>
+				<li><a href="{{biocache_hub_context_path}}/occurrences/search?q=*%3A*#tab_mapView">DATOS GEOREFERENCIADOS</a></li>
+				<li><a href="{{collectory_context_path}}/datasets">SETS DE DATOS</a></li>
+				<li><a href="{{collectory_context_path}}">COLECCIONES</a></li>
+				<li><a href="/feedback.html">FEEDBACK</a></li>
+			</ul>
+		  </div>
+	</div>
+	<!--
+	<div id="header" class="container-fluid">
+		<div id="header_logos_row" >
+			<div id="header_logos" class="container row">
+				<div class="span6">
+				  <a href="#"><img src="images/logo_portal.png" alt="Portal del SNDB"></a>
+				</div>			
+
+				<div class="span6">
+				  <a href="#" class="pull-right"><img src="images/logo_datos_biologicos.png" alt="Sistemas Nacionales - Datos Biológicos"></a>
+				</div>			
+			</div>
+		</div>
+		<div class="navbar navbar-inverse" >
+			  <div class="navbar-inner" style="padding:0;">
+				<ul class="nav" >
+					<li><a href="./">INICIO</a></li>
+					<li><a href="/">DATOS GEOREFERENCIADOS</a></li>
+					<li><a href="/">SETS DE DATOS</a></li>
+					<li><a href="/">COLECCIONES</a></li>
+				</ul>
+			  </div>
+		</div>
+	</div>
+	-->
+	<div class="container-fluid">
+		<div id="container_presentacion">
+			<div class="container">
+				<h1>Sistema Nacional de Datos Biológicos - Portal de datos</h1>
+				<p>Bienvenido al portal de datos de biodiversidad del SNDB. Desde este sitio usted podrá acceder a los
+		datos georeferenciados, los conjuntos de datos publicados y las colecciones de los miembros del SNDB.
+		A su vez podrá realizar búsquedas de los especímenes y otros registros de presencias publicados,
+		conocer su ubicación geográfica e información taxónomica.</p>
+			</div>
+		</div>
+		<div id="container_buscador">
+			<div class="container">
+				<div class="row text-center">
+				  <div class="span12" style="margin-top:2em;margin-bottom:1.5em;">
+					<p id="consultar">Consultar los <span id="registros-hallados">904.386</span> registros de presencia</p>
+				  </div>					
+				</div>
+				<div class="row text-center"> 
+					<form class="form-horizontal" action="{{biocache_hub_context_path}}/occurrences/search">
+					    <input type="text" id="taxaQuery" name="q" class="span8"  placeholder="Buscar" >
+		 			   <button type="submit" class="btn btn-warning " id="btn-buscar" type="submit">
+						<i class="icon-search icon-white"></i>&nbsp;<span>BUSCAR</span></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid " style="padding:0px;margin:0px;">
+	      <!-- Example row of columns -->
+		<div class="container">
+			<div class="span4">
+			  <h2 style="color: #8CC63F; font-size:1.6em; text-transform: uppercase;">Datos georeferenciados</h2>
+			  <div class="grow-pic">
+				<a href="/generic-hub/occurrences/search?q=*%3A*#tab_mapView">
+				 <img id="georeferenciados" src="galeria/georeferenciados/001.jpg" style="height:200px;display:none;">
+				</a>
+			  </div>
+			  <div style="background-color: #8CC63F; color: white; color: white; padding:1em; height: 9em;">
+			  <p>Conozca los registros, su ubicaci&oacute;n e informaci&oacute;n taxon&oacute;mica publicada por las instituciones participantes del SNDB.</p>
+			  <p><a class="btn" href="/generic-hub/occurrences/search?q=*%3A*#tab_mapView">Ver datos &raquo;</a></p>
+			  </div>
+			</div>
+			<div class="span4">
+			  <h2 style="color: #00A99D; font-size:1.6em; text-transform: uppercase;">Conjuntos de datos</h2>
+			  <div class="grow-pic">
+				<a href="{{collectory_context_path}}/datasets">
+				 <img id="datasets" src="galeria/datasets/001.jpg" style="height:200px;display:none;">
+				</a>
+			  </div>
+			  <div style="background-color: #00A99D; color: white; padding:1em; height: 9em;">
+			  <p>Acceda a la informaci&oacute;n de los juegos de datos publicados por las instituciones y colecciones del SNDB.</p>
+			  <p><a class="btn" href="{{collectory_context_path}}/datasets">Ver conjuntos &raquo;</a></p>
+			  </div>
+		       </div>
+			<div class="span4">
+			  <h2 style="color: #009245; font-size:1.6em; text-transform: uppercase;">Colecciones</h2>
+			  <div class="grow-pic">
+				<a href="{{collectory_context_path}}">
+				 <img id="colecciones" src="galeria/colecciones/001.jpg" style="height:200px;display:none;">
+				</a>
+			  </div>
+			  <div style="background-color: #009245; color: white; color: white; padding:1em; height: 9em;">
+			  <p>Vea las colecciones sobre biodiversidad, su la descripción, información de contacto y otra informaci&oacute;n de las colecciones de datos biol&oacute;gicos adheridas al SNDB.</p>
+			  <p><a class="btn" href="{{collectory_context_path}}">Ver colecciones &raquo;</a></p>
+			  </div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer">
+		<div id="footer_logos" class="container-fluid" >
+			<div class="container text-center" style="padding-top:20px;">
+				  <a href="#"><img  src="images/logo_mincyt.png" alt="Ministerio de Ciencia, Tecnología e Innovación Productiva"></a>
+				  <a href="#"><img  src="images/logo_crowdin.png" alt="Crowdin"></a>
+				  <a href="#"><img  src="images/logo_australia.png" alt="Atlas of living australia"></a>
+				  <a href="#"><img  src="images/logo_gbif.png" alt="GBIF.org"></a>
+				</div>
+			</div>
+		</div>
+		<div id="footer_nav">
+			<div class="container text-center row">
+				<div class="span3" id="disclaimer-box">
+				  <p>Estamos ajustando algunas funcionalidades del portal. Disculpe las molestias que esto pueda ocasionar.</p>
+				  <p>Si observa cualquier incidencia agradeceríamos que nos la comunicase mediante mensaje a sndb@mincyt.gob.ar</p>
+				</div>
+				<div class="span3" id="contact-box">
+				 <p>
+					Godoy Cruz 2320, 2° piso (C1425FQD)<br/>
+					Ciudad Autónoma de Buenos Aires<br/>
+					República Argentina<br/>
+					Tel/Fax.: (54-11) 4899-5000 Int. 2182<br/>
+                                 </p>
+				</div>
+				<div class="span3" id="navigation-box">
+					<ul class="white" >
+						<li><a href="http://{{demo_hostname}}/">INICIO</a></li>
+						<li><a href="{{biocache_hub_context_path}}/occurrences/search?q=*%3A*#tab_mapView">DATOS GEOREFERENCIADOS</a></li>
+						<li><a href="{{collectory_context_path}}/datasets">SETS DE DATOS</a></li>
+						<li><a href="{{collectory_context_path}}">COLECCIONES</a></li>
+						<li><a href="/feedback.html">FEEDBACK</a></li>
+						<li><a href="http://datos2010.sndb.mincyt.gob.ar/portal">PORTAL DE DATOS DE 2010</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- javascript al final para que cargue rapido el html -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/sndb.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85741610-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+	</body>
+</html> 

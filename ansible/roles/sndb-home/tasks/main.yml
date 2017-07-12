@@ -1,0 +1,56 @@
+- include: ../../common/tasks/setfacts.yml
+
+- name: Add entries for demo into hosts file
+  lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line="127.0.0.1 localhost {{ demo_hostname | default('') }} ala.vagrant.dev ala demo.vagrant1.ala.org.au vagrant1.ala.org.au" owner=root group=root mode=0644
+
+- name: Ensure data directory exists
+  file: path=/srv/{{ demo_hostname }}/www/html state=directory owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - sndb-home
+
+- name: Deploy static web
+  unarchive: src=www.tar.gz dest=/srv/{{ demo_hostname }}/www/ owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - sndb-home
+
+- name: Copy sndb index (Debian)
+  template: src=index.html dest=/srv/{{ demo_hostname }}/www/ mode=0666 owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - sndb-home
+
+- name: Copy sndb feedback page (Debian)
+  template: src=feedback.html dest=/srv/{{ demo_hostname }}/www/ mode=0666 owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - sndb-home
+
+- name: Copy sndb javascript (Debian)
+  template: src=sndb.js dest=/srv/{{ demo_hostname }}/www/js mode=0666 owner={{tomcat_user}} group={{tomcat_user}}
+  tags:
+    - sndb-home
+
+- name: Create symlink to data/biocache-media from /srv/[hostname]/www/biocache-media
+  command: "ln -sf /data/biocache-media  /srv/{{ demo_hostname }}/www/biocache-media" 
+  ignore_errors: yes
+  tags:
+    - sndb-home
+
+- name: Create symlink to data/biocache-media from /srv/[hostname]/www/html/biocache-media
+  command: "ln -sf /data/biocache-media  /srv/{{ demo_hostname }}/www/html/biocache-media" 
+  ignore_errors: yes
+  tags: 
+    - sndb-home
+
+- name: Finish message
+  debug: msg="That's ready! You can now access your ALA demo instance at http://{{ demo_hostname }}"
+  tags: 
+    - sndb-home
+
+- name: set redhat variables
+  command: "usermod -a -G {{ tomcat_user }} ubuntu" 
+  when: ansible_os_family == "Debian"
+  ignore_errors: yes
+
+- name: Finish message
+  debug: msg="Theres further documentation on data loading here https://github.com/AtlasOfLivingAustralia/documentation/wiki"
+  tags: 
+    - sndb-home
