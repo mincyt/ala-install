@@ -47,13 +47,13 @@ org_url=http://www.mincyt.gob.ar
 orgNameLong=SNDB
 orgNameShort=sndb
 
-explore_your_area_lat = 54.00366
-explore_your_area_lng = -2.547855
-explore_your_area_location=Buenos Aires
+explore_your_area_lat = -38.15
+explore_your_area_lng = -65.916667
+explore_your_area_location=Puelches
 
-map_default_latitude = 54.00366
-map_default_longitude = -2.547855
-map_default_zoom = 5
+map_default_latitude = -38.15
+map_default_longitude = -65.916667
+map_default_zoom = 3
 
 skin_layout = generic
 
@@ -84,9 +84,9 @@ api_key= to_be_added
 skin = generic
 
 # Map config
-collections_map_lat = 54.00366
-collections_map_lon = -2.547855
-collections_map_zoom = 5
+collections_map_lat = -38.15
+collections_map_lon = -65.916667
+collections_map_zoom = 3
 
 # Project name
 orgNameShort = Portal del SNDB
